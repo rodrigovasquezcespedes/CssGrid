@@ -153,6 +153,9 @@
         color: #fff;
         border-radius: 50px;
     }
+    .menu-button {
+        display: none;
+      }
 
 }
 
