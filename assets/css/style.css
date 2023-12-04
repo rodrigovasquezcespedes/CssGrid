@@ -4,14 +4,16 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    font-family: 'Roboto', 'Lucida Sans Regular';
 }
 
 
 
 .body {
+    color: #f3f2f0;
     display: grid;
     grid-template-columns: 100% auto;
-    grid-template-rows: 50px 50px auto 50px;
+    grid-template-rows: 50px 1px auto 50px;
     grid-template-areas:
         "header"
         "aside"
@@ -21,33 +23,31 @@
 
 .header {
     grid-area: header;
-    background-color: aqua;
+    background-color: #42413d;
 }
 
 .header h1 {
     text-align: center;
+    margin-top: 10px;
+}
+.header img{
+    width: 100px;
+    position:absolute;
+    margin: 10px;
 }
 
 .aside {
     grid-area: aside;
-    background-color: blueviolet;
+    background-color: #ffc400;
 }
 
 .nav {
     grid-area: nav;
-    background-color: brown;
-}
-
-.menu-button i {
-    font-size: 24px;
-    position: absolute;
-    top: 10px;
-    right: 10px;
 }
 
 .main {
     grid-area: main;
-    background-color: blue;
+    background-color: #b2afac;
 }
 
 .card {
@@ -63,27 +63,25 @@
 
 .card a {
     text-decoration: none;
-    background-color: #3498db;
-    border: 1px solid #f7f7f7;
+    background-color: #ffce2b;
+    border: 2px solid #ffffff;
     padding: 8px 200px;
-    color: #fff;
     border-radius: 50px;
 }
 
 .footer {
     grid-area: footer;
-    background-color: orange;
+    background-color: #42413d;
 }
 
 .footer p {
     text-align: center;
-    color: #fff;
     font-size: 20px;
+    margin-top: 10px;
 }
 
 .grid-container {
     display: grid;
-    scroll-behavior: smooth;
     grid-template-columns: repeat(1, 1fr);
     /* Crea 3 columnas de igual tamaño */
     grid-template-rows: repeat(4, 350px);
@@ -94,14 +92,51 @@
 
 .item {
     display: flex;
-    background-color: #3498db;
-    color: #fff;
+    background-color: #959492;
     justify-content: center;
     padding: 10px;
     margin: 5px;
 }
-
-@media (min-width: 600px) {
+/*
+@media (min-width:400px){
+    .nav ul{
+        position:fixed;  
+        width: 100%;
+        height: 100vh;
+        background-color: #ffc400;
+        top:50px;
+        left: -100%;
+        transition: all .5s ;
+     }
+     .nav ul li{
+         display: block;
+         margin: 50px 0;
+         line-height: 20px;
+         padding: 20px;
+     }
+     .nav ul li a{
+         font-size: 25px;
+     }
+     */
+     .checkbtn i {
+         font-size: 24px;
+         position: absolute;
+         top: 10px;
+         right: 10px;
+         cursor: pointer;
+         text-align: center;
+     }
+    /*
+     #check:checked ~ ul {
+       left:0;
+     }
+     #check{
+         display: none;
+     }
+}
+*/
+/*------------------------>   media query para tablet<---------------------------------*/
+@media (min-width: 700px) {
     .body {
         grid-template-columns: 100% auto;
         grid-template-rows: 50px 50px auto 50px;
@@ -112,6 +147,10 @@
             "footer footer";
     }
 
+    .header img{
+        width: 120px;
+        position:absolute;
+    }
     .grid-container {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -122,6 +161,9 @@
         /* Espacio entre las celdas */
         margin: 5px;
     }
+    .nav ul{
+        display: block;
+    }
 
     .nav ul li {
         display: inline-block;
@@ -130,8 +172,11 @@
     }
 
     .nav ul li a {
-        color: #fff;
         text-decoration: none;
+    }
+    .active{
+        font-size: 22px;
+        border:2px solid #42413d;
     }
 
     .card {
@@ -141,36 +186,43 @@
     }
 
     .card img {
-        width: 50%;
-        height: 70%;
+        width: 180px;
+        height: 180px;
     }
 
     .card a {
         text-decoration: none;
-        background-color: #3498db;
+        background-color: #ffce2b;
         border: 1px solid #f7f7f7;
         padding: 8px 200px;
-        color: #fff;
         border-radius: 50px;
     }
-    .menu-button {
+    .checkbtn {
+        display: none;
+      }
+      #check{
         display: none;
       }
 
 }
-
+/*------------------------>   media query para pc<---------------------------------*/
 @media (min-width: 1281px) {
     .body {
         grid-template-columns: 200px auto;
-        grid-template-rows: 9% 95% 10%;
-        grid-template-areas:
+        grid-template-rows: 55px 552px 50px;
+        grid-template-areas:                      /*grid area */
             "header header header"
             "aside main main "
             "footer footer footer";
     }
 
+    .header img{
+        width: 130px;
+        position:absolute;
+    }
+
     .grid-container {
-        display: grid;
+        display: grid;                        /*grid en el contenedor*/
         grid-template-columns: repeat(3, 1fr);
         /* Crea 3 columnas de igual tamaño */
         grid-template-rows: repeat(2, 250px);
@@ -181,36 +233,44 @@
     }
 
     .nav ul li {
-        display: flex;
+        display: flex;                        /*flex en el menu*/
     }
 
     .nav ul li a {
         flex-direction: column;
-        padding: 15px 20px;
+        padding: 10px 15px;
         text-decoration: none;
-        color: #fff;
+    }
+    .nav ul li a:active{
+        color: #ddd3d3;
+    }
+    .active{
+        font-size: 22px;
+        border:2px solid #42413d;
     }
 
     .card {
-        display: flex;
+        display: flex;                         /*flex en el card*/
         flex-direction: column;
         align-items: center;
     }
 
     .card img {
-        width: 70%;
-        height: 80%;
+        width: 200px;
+        height: 200px;
     }
 
     .card a {
         text-decoration: none;
-        background-color: #3498db;
+        background-color: #ffce2b;
         border: 1px solid #f7f7f7;
         padding: 8px 100px;
-        color: #fff;
         border-radius: 50px;
     }
-    .menu-button {
+    .checkbtn {
+        display: none;
+      }
+      #check{
         display: none;
       }
 
